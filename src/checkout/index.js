@@ -1,5 +1,5 @@
 import React from 'react';
-import SubTotal from '../Subtotal';
+import SubTotal from '../subtotal';
 import CheckoutProduct from './checkout-product';
 import './checkout.css';
 
