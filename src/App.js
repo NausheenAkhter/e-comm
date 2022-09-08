@@ -13,7 +13,7 @@ function App() {
             element={
               <>
                 <Header />
-                <Checkout />{' '}
+                <Checkout />
               </>
             }
           ></Route>
