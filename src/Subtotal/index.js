@@ -1,13 +1,16 @@
 import React from 'react';
+import useAppState from '../hooks/use-app-state';
 import './Subtotal.css';
-function SubTotal() {
+function SubTotal({ price = 0 }) {
+  const [state] = useAppState();
+  const { basket = [] } = state || {};
   return (
-    <div className='subtotal'>
+    <div className="subtotal">
       <div>
         <p>
-          Subtotal (0 items): <strong>$0</strong>
+          Subtotal ({basket.length} items): <strong>${price}</strong>
         </p>
-        <small className='subtotal__gift'>
+        <small className="subtotal__gift">
           <input type={'checkbox'} />
           This Order contains a gift
         </small>
