@@ -3,11 +3,17 @@
  */
 
 export const initialState = {
-  basket: []
+  basket: [],
+  authToken: ''
 };
 
 export const reducer = (state, action) => {
   switch (action?.type) {
+    case 'UPDATE_TOKEN':
+      return {
+        ...state,
+        authToken: action?.token
+      };
     case 'ADD_TO_CART':
       return {
         ...state,
