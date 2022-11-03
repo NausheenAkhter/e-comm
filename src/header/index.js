@@ -23,7 +23,9 @@ function Header() {
       <div className="header__nav">
         <div className="nav__item">
           <span className="nav__item_1">Hello Guest</span>
-          <span className="nav__item_2">Sign In</span>
+          <Link to={'/login'} style={{ textDecoration: 'none' }}>
+            <span className="nav__item_2">Sign In</span>
+          </Link>
         </div>
         <div className="nav__item">
           <span className="nav__item_1">Your</span>
