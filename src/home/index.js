@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './home.css';
 import Product from '../product';
+import { useNavigate } from 'react-router-dom';
+import useAppState from '../hooks/use-app-state';
 function HOME() {
   const [products, setProducts] = useState([]);
+  const [state] = useAppState()
+  const navigate = useNavigate();
   const fetchItems = async () => {
     const resp = await fetch(
       'https://fakerapi.it/api/v1/products?_quantity=100&_taxes=12&_categories_type=uuid'
@@ -13,6 +17,9 @@ function HOME() {
   };
 
   useEffect(() => {
+    if (!state?.authToken) {
+      navigate('/login');
+    }
     fetchItems();
   }, []);
 

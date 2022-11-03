@@ -5,10 +5,12 @@ import {
 import React, { useState } from 'react';
 import { auth } from '../tools/firebase';
 import { useNavigate } from 'react-router-dom';
+import useAppState from '../hooks/use-app-state';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [state, dispatch]=useAppState()
   const navigate = useNavigate();
 
   const signIn = (e) => {
@@ -17,6 +19,10 @@ function Login() {
       .then((userCredential) => {
         const user = userCredential.user;
         navigate('/');
+        dispatch({
+          type: 'UPDATE_TOKEN',
+          token: user.getIdToken()
+        })
         console.log(user);
       })
       .catch((error) => {
